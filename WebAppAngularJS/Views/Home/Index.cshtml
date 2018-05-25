@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div ng-app="AngJS">
+
+    <div class="col-md-2" ng-controller="myCtrl">
+        <p>1+3={{1+3}}</p>
+    </div>
+
+    <div class="col-md-5"  ng-controller="myCtrl">
+        <p> {{firstName}}{{lastName}}</p>
+
+        <input type="text" ng-model="firstName" />
+        <input type="text" ng-model="lastName" />
+
+        <button ng-click="addPerson()">Add</button>
+        <hr/>
+
+        <input type="text" ng-model="lookFor" />
+
+        @*<ul><li ng-repeat="name in names">{{name}}</li></ul>*@
+        <ul>
+            @*<li ng-repeat="name in names | filter : 'i'">*@
+            <li ng-repeat="name in names | filter : lookFor">
+                {{name.Id + " " + name.FirstName + " " + name.LastName}}
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="col-md-5" ng-controller="carCtrl">
+        <input type="text" ng-model="lookFor" />
+        <ul>
+            <li ng-repeat="name in names | filter : lookFor">
+               @* {{name}}*@
+
+                {{name.Id + " " + name.Name + " " + name.Brand}}
+            </li>
+        </ul>
+
+    </div>
+
+    @Scripts.Render("~/bundles/AngularApp")
+
+  @*  <script src="~/Content/Angular/app.js"></script>*@
+  @*  <script src="~/Content/Angular/controllers.js"></script>*@
+
+</div>
